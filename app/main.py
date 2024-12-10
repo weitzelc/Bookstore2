@@ -13,6 +13,7 @@ async def on_startup():
     # Ensure the database is initialized
     await init_db()
 
+
 @app.post("/books/", response_model=BookResponse, satus_code=201)
 async def create_book(book: BookCreate, db: AsyncSession = Depends(get_db)):
     new_book = Book(**book.model_dump())
